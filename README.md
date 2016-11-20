@@ -1,0 +1,1 @@
+<h2>Magento 2 test</h2>
