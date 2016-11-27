@@ -30,7 +30,20 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 'default' => '0',
                 'comment' => 'Comment'
             ]);
+        } else  if (version_compare($context->getVersion(), '0.3.0', '<')) {
+            /**
+             * Add full text index
+             */
+            $tableName = $setup->getTable('maestro_contacts');
+            $fullTextIntex = array('name','email');
+            $setup->getConnection()->addIndex(
+                $tableName,
+                $setup->getIdxName($tableName, $fullTextIntex, \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT),
+                $fullTextIntex,
+                \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+            );
         }
+
         $setup->endSetup();
     }
 }
