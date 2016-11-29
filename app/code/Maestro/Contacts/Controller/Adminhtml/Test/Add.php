@@ -1,5 +1,5 @@
 <?php
-namespace MAestro\Contacts\Controller\Adminhtml\Test;
+namespace Maestro\Contacts\Controller\Adminhtml\Test;
 use Magento\Backend\App\Action;
 
 class Add extends Action
