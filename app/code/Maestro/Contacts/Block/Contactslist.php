@@ -2,23 +2,28 @@
 namespace Maestro\Contacts\Block;
 use Magento\Framework\View\Element\Template;
 
-class Contactslist extends \Magento\Framework\View\Element\Template
+class Contactslist extends Template
 {
-    public function __construct(Template\Context $context, array $data = array())
-    {
-        parent::__construct($context, $data);
-        $this->setData('contacts',array());
+    private $_contact;
+
+    public function __construct(
+        \Magento\Framework\View\Element\Template\Context $context,
+        \Maestro\Contacts\Model\Contact $contact,
+        \Magento\Framework\App\ResourceConnection $resource,
+        array $data = []
+    ) {
+        $this->_contact = $contact;
+        $this->_resource = $resource;
+
+        parent::__construct(
+            $context,
+            $data
+        );
     }
 
-    /** Permet d'ajouter un contact a chaque call de la fct */
-    public function addContacts($count)
+    public function getContacts()
     {
-        $_contacts = $this->getData('contacts');
-        $actualNumber = count($_contacts);
-        $names = array();
-        for($i=$actualNumber;$i<($actualNumber+$count);$i++) {
-            $_contacts[] = 'nom '.($i+1);
-        }
-        $this->setData('contacts',$_contacts);
+        $collection = $this->_contact->getCollection();
+        return $collection;
     }
 }

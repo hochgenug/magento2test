@@ -1,12 +1,12 @@
 <?php
 namespace Maestro\Contacts\Controller\Test;
-class Index extends \Magento\Framework\App\Action\Action
+use \Magento\Framework\App\Action\Action;
+
+class Index extends Action
 {
     public function execute()
     {
-        // charge le layout
         $this->_view->loadLayout();
-        // fait le rendu
         $this->_view->renderLayout();
     }
 }
