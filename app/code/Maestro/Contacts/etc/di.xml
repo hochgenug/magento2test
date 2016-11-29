@@ -39,4 +39,7 @@
         </arguments>
     </virtualType>
 
+    <preference for="Magento\Catalog\Model\Product" type="Maestro\Contacts\Model\Product" />
+    <preference for="Magento\Catalog\Block\Product\View" type="Maestro\Contacts\Block\Product\View" />
+
 </config>
