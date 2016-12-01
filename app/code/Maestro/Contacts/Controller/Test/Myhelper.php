@@ -8,7 +8,7 @@ class Myhelper extends Action
     protected $_myHelper;
 
     /**
-     * @param \Maestro\Contacts\Helper\Myhelper $helperData
+     * @param \Maestro\Contacts\Helper\Myhelper $helper
      */
     public function __construct(
         Context $context,
